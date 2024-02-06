@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Home() {
+  const baseUrl = 'https://staging-api.etonshirts.com';
   const [products, setProducts] = useState<{}[]>([]);
 
   const fetchProducts = async () => {
@@ -33,7 +34,7 @@ export default function Home() {
     }, []);
 
 
-    if (!products) {
+    if (products.length < 0) {
       toast.error('No products found');
       return notFound();
     }
@@ -44,45 +45,32 @@ export default function Home() {
     return (
       <main>
         <div className="text-3xl font-bold text-center my-12">Eton</div>
-        <div className="flex min-h-screen flex-wrap items-start justify-between">
-          {products.map((product: any) => {
-              return (
-                <div key={product.id} className="min-h-[725px]">
-                  {/* <img
-                    src={isHovered ? hoverImage : initialImage}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className="transition-all duration-500 ease-in-out h-[625px] w-[500px] object-cover"
-                  /> */}
-                  <div className="relative w-[500px] h-[625px]">
-                    <img
-                      className="absolute inset-0 w-full h-full object-cover opacity-100 hover:opacity-0 cursor-pointer transition-all duration-300 ease-in-out"
-                      src={`https://staging-api.etonshirts.com/v1/retail/image/1080/bynder/${product.productVariants[0].retailImages.gallery[0].mediaKey}/${product.uri}.webp`}
-                      alt="Initial"
-                    />
-                    {product.productVariants[0].retailImages.gallery.map((image: any) => {
-                      console.log({image});
-                        return (
-                          <img
-                            className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out"
-                            src={`https://staging-api.etonshirts.com/v1/retail/image/1080/bynder/${image.mediaKey}/${product.uri}.webp`}
-                            alt="Hover"
-                          />
-                        )
-                    })}
-                  </div>
-                  <div className="m-4 space-y-2">
-                    <div className="text-xs font-semibold">{product.name}</div>
-                    <div className="text-sm">{product.productVariants[0].price.formattedPriceBeforeDiscount}</div>
-
-                  </div>
-                </div>
-              );
-        })}
-
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+          {products.map((product: any) => (
+            <div key={product.id} className="overflow-hidden">
+              <div className="relative min-h-[200px] w-full">
+                <img
+                  className="w-full h-full object-cover transition-opacity duration-500 cursor-pointer hover:opacity-0"
+                  src={`${baseUrl}/v1/retail/image/1080/bynder/${product.productVariants[0].retailImages.thumbnail.mediaKey}/${product.uri}.webp`}
+                  alt={product.name}
+                />
+                {product.productVariants[0].retailImages.gallery.map((image: any) => (
+                  <img
+                    key={image.mediaKey}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 cursor-pointer hover:opacity-100"
+                    src={`${baseUrl}/v1/retail/image/1080/bynder/${image.mediaKey}/${product.uri}.webp`}
+                    alt={product.name}
+                  />
+                ))}
+              </div>
+              <div className="m-4 space-y-2">
+                <div className="text-xs font-semibold">{product.name}</div>
+                <div className="text-sm">{product.productVariants[0].price.formattedPriceBeforeDiscount}</div>
+              </div>
+            </div>
+          ))}
         </div>
-      <Toaster />
-
-    </main>
+        <Toaster />
+      </main>
   );
 }
