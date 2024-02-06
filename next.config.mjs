@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'staging-api.etonshirts.com',
-            port: '',
-            pathname: '/v1/retail/image/',
-          },
-        ],
+        domains: ['staging-api.etonshirts.com'],
+        // remotePatterns: [
+        //   {
+        //     protocol: 'https',
+        //     hostname: 'staging-api.etonshirts.com',
+        //     port: '',
+        //     pathname: '/v1/retail/image/',
+        //   },
+        // ],
       },
 };
 
