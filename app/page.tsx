@@ -73,7 +73,7 @@ export default function Home() {
                   height={500}
                   className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:opacity-0"
                   />
-                {product.productVariants[0].retailImages.gallery.map((image: any) => (
+                {product.productVariants[0].retailImages.gallery.map((image: RetailImage) => (
                   <Image
                     key={image.mediaKey}
                     width={400}
