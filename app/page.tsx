@@ -45,19 +45,19 @@ export default function Home() {
     return (
       <main>
         <div className="text-3xl font-bold text-center my-12">Eton</div>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+        <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 lg:gap-2">
           {products.map((product: any) => (
             <div key={product.id} className="overflow-hidden">
               <div className="relative min-h-[200px] w-full">
                 <img
-                  className="w-full h-full object-cover transition-opacity duration-500 cursor-pointer hover:opacity-0"
+                  className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:opacity-0"
                   src={`${baseUrl}/v1/retail/image/1080/bynder/${product.productVariants[0].retailImages.thumbnail.mediaKey}/${product.uri}.webp`}
                   alt={product.name}
                 />
                 {product.productVariants[0].retailImages.gallery.map((image: any) => (
                   <img
                     key={image.mediaKey}
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 cursor-pointer hover:opacity-100"
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-500 cursor-pointer hover:opacity-100"
                     src={`${baseUrl}/v1/retail/image/1080/bynder/${image.mediaKey}/${product.uri}.webp`}
                     alt={product.name}
                   />
