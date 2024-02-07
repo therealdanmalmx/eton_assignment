@@ -9,7 +9,7 @@ const ProductCard = ({product}: Product) => {
 
     return (
         <Link href={`/products/${product.id}`}>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden z-10">
                 <div className="relative min-h-[200px] w-full">
                     {/* Initial image */}
                     <Image
