@@ -1,34 +1,7 @@
-// 'use client'
-// import { useProducts } from '@/ProductContext'
-// import dataFetch from '@/dataFetch'
-// import { Product } from '@/interfaces'
-// import { formatUrlName } from '@/utilities'
-// import { useParams, usePathname } from 'next/navigation'
-// import React from 'react'
-
-
-
-// const ProducDetailPage = async () => {
-//     const { products } = useProducts();
-//     const pathName = usePathname();
-//     const params = useParams();
-//     console.log(params.product);
-//     console.log({pathName});
-
-//     const productDetail = products.find((product) => formatUrlName(product) === params.product);
-
-//     return (
-//         <div>{productDetail}</div>
-//     )
-// }
-
-// export default ProducDetailPage
-
 'use client'
 import { useProducts } from '@/ProductContext';
-import { Product } from '@/interfaces';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import { notFound, useParams } from 'next/navigation';
 
 const ProductDetailPage = () => {
     const baseUrl = 'https://staging-api.etonshirts.com';
@@ -44,10 +17,10 @@ const ProductDetailPage = () => {
 
     console.log({productDetail});
 
-    // if (!productDetail) {
-    //     toast.error('Product not found');
-    //     return notFound();
-    // };
+    if (!productDetail) {
+        // toast.error('Product not found');
+        return notFound();
+    };
 
     return (
         <div>
@@ -64,14 +37,19 @@ const ProductDetailPage = () => {
                     />
                     ))}
             </div>
-            <div className='text-2xl font-bold m-4 space-y-4'>
-            <div>{productDetail?.name}<span className='text-xl font-normal'>- {productDetail?.productVariants[0].price.formattedPriceBeforeDiscount}</span></div>
-                {productDetail?.productVariants[0].isAvailableCustomMade && (
-                    <div className='text-2xl font-bold m-4'>Can be customed made</div>
-                )}
-                {productDetail?.productVariants[0].bodyfitName && (
-                    <div>{productDetail?.type}: <span className='text-xl font-normal'>{productDetail?.productVariants[0].bodyfitName}</span>  </div>
-                )}
+            <div className='text-md font-bold mx-12 my-4 flex justify-between items-start'>
+                <div>
+                    <div>{productDetail?.name}<span className='font-normal'>- {productDetail?.productVariants[0].price.formattedPriceBeforeDiscount}</span></div>
+                        {productDetail?.productVariants[0].isAvailableCustomMade && (
+                            <div className='text-2xl font-bold m-4'>Can be customed made</div>
+                        )}
+                </div>
+                <div>
+                    {productDetail?.productVariants[0].bodyfitName && (
+                        <div>{productDetail?.type}: <span className='font-normal'>{productDetail?.productVariants[0].bodyfitName}</span>  </div>
+                        )}
+                    <div>Article number: <span className='font-normal'>{productDetail?.productVariants[0].articleNumber}</span></div>
+                </div>
             </div>
         </div>
     );

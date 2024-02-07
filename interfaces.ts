@@ -12,6 +12,7 @@ export interface ProductVariant {
     };
     isAvailableCustomMade: boolean;
     bodyfitName: string;
+    articleNumber: string;
 }
 
 export interface Product {
