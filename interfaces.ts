@@ -22,12 +22,14 @@ export interface Product {
         uri: string;
         type: string;
         productVariants: ProductVariant[];
+        colorLinks: ColorLinks[];
     }
     id: string | number;
     name: string;
     uri: string;
     type: string;
     productVariants: ProductVariant[];
+    colorLinks: ColorLinks[];
 }
 
 export interface ProductList {

@@ -40,7 +40,6 @@ const ProductCard = ({product}: Product) => {
                     <div className='flex items-center justify-center space-x-2'>
                         {colorLinks.slice(0, 4).map((color: ColorLinks) => (
                             <>
-                                {/* <span key={color.colorId} className="rounded-full border border-slate-300 h-4 w-4 bg-[#000000]" style={{backgroundColor: color.colorName.toLowerCase()}}></span> */}
                                 <Image
                                     width={400}
                                     height={500}
