@@ -45,12 +45,13 @@ const ProductCard = ({product}: Product) => {
                     <div className='flex items-center justify-center space-x-1 lg:space-x-2'>
                         {colorLinks.slice(0, 4).map((color: ColorLinks) => (
                             <Image
-                            width={400}
-                            height={500}
-                            src={`${baseUrl}/v1/retail/image/1080/bynder/${color.retailImage.mediaKey}/${color.uri}.webp`}
-                            alt={product.name}
-                            priority
-                            className="h-4 w-4 lg:w-10 lg:h-10 rounded-full hidden lg:block"
+                                key={color.colorId}
+                                width={400}
+                                height={500}
+                                src={`${baseUrl}/v1/retail/image/1080/bynder/${color.retailImage.mediaKey}/${color.uri}.webp`}
+                                alt={product.name}
+                                priority
+                                className="h-4 w-4 lg:w-10 lg:h-10 rounded-full hidden lg:block"
                             />
 
                             ))}
