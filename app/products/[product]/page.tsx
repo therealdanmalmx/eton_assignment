@@ -16,7 +16,15 @@ const ProductDetailPage = () => {
         notFound();
     };
     return (
-        <ProductDetailsPage product={productDetail as Product} />
+        <ProductDetailsPage
+            product={productDetail}
+            id={productDetail.id}
+            name={productDetail.name}
+            uri={productDetail.uri}
+            type={productDetail.type}
+            productVariants={productDetail.productVariants}
+            colorLinks={productDetail.colorLinks}
+        />
     );
 };
 
