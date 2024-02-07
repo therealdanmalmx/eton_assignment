@@ -13,17 +13,23 @@ const ProductDetailPage = () => {
     const productDetail = products.find((product:Product) => product.id === productId);
 
     if (!products || !productDetail) {
-        notFound();
-    };
+        return (
+            <div className="flex items-center justify-center h-screen w-11/12">
+                <div className="text-center text-2xl">
+                    Loading product detail page...
+                </div>
+            </div>
+        );
+    }
     return (
         <ProductDetailsPage
-            product={productDetail}
-            id={productDetail.id}
-            name={productDetail.name}
-            uri={productDetail.uri}
-            type={productDetail.type}
-            productVariants={productDetail.productVariants}
-            colorLinks={productDetail.colorLinks}
+            product={productDetail!}
+            id={productDetail!.id}
+            name={productDetail!.name}
+            uri={productDetail!.uri}
+            type={productDetail!.type}
+            productVariants={productDetail!.productVariants}
+            colorLinks={productDetail!.colorLinks}
         />
     );
 };
