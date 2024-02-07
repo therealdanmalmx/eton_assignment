@@ -4,7 +4,6 @@ import { Product } from '@/interfaces';
 
 const ProductDetailsPage = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
-    console.log('product details', product);
 
   return (
     <div>
@@ -21,11 +20,11 @@ const ProductDetailsPage = ({product}: Product) => {
                 />
                 ))}
         </div>
-        <div className='text-md font-bold mx-12 my-10 space-x-28 flex justify-between items-start'>
+        <div className='text-md font-bold mx-24 my-10 space-x-28 flex justify-between items-start'>
             <div>
-                <div>{product?.name}<span className='font-normal'> <p>{product?.productVariants[0].price.formattedPriceBeforeDiscount}</p></span></div>
+                <div>{product?.name}<span className='font-normal'><p>{product?.productVariants[0].price.formattedPriceBeforeDiscount}</p></span></div>
                     {product?.productVariants[0].isAvailableCustomMade && (
-                        <div className='text-2xl font-bold m-4'>Can be customed made</div>
+                        <div className='text-2xl font-bold m-4'>Can be custom made</div>
                     )}
             </div>
             <div>

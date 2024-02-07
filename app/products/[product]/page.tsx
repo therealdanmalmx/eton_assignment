@@ -11,20 +11,11 @@ const ProductDetailPage = () => {
 
     const productDetail = products.find((product) => product.id === productId);
 
-    // if (!products && !productDetail) {
-    //     notFound();
-    // };
-
+    if (!products && !productDetail) {
+        notFound();
+    };
     return (
-        <ProductDetailsPage
-            key={productDetail!.id}
-            product={productDetail!}
-            id={productDetail!.id}
-            name={productDetail!.name}
-            uri={productDetail!.uri}
-            type={productDetail!.type}
-            productVariants={productDetail!.productVariants}
-        />
+        <ProductDetailsPage product={productDetail} />
     );
 };
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
-import { RetailImage, Product } from '@/interfaces'
+import { RetailImage, Product, ColorLinks } from '@/interfaces'
 import Link from 'next/link'
 
 const ProductCard = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
+    const { colorLinks } = product;
+    console.log({product});
 
     return (
         <Link href={`/products/${product.id}`}>
@@ -30,9 +32,31 @@ const ProductCard = ({product}: Product) => {
                     />
                 ))}
                 </div>
-                <div className="m-4 space-y-2">
-                    <div className="text-xs font-semibold">{product.name}</div>
-                    <div className="text-sm">{product.productVariants[0].price.formattedPriceBeforeDiscount}</div>
+                <div className="flex justify-between m-4">
+                    <div>
+                        <div className="text-xs font-semibold">{product.name}</div>
+                        <div className="text-sm">{product.productVariants[0].price.formattedPriceBeforeDiscount}</div>
+                    </div>
+                    <div className='flex items-center justify-center space-x-2'>
+                        {colorLinks.slice(0, 4).map((color: ColorLinks) => (
+                            <>
+                                {/* <span key={color.colorId} className="rounded-full border border-slate-300 h-4 w-4 bg-[#000000]" style={{backgroundColor: color.colorName.toLowerCase()}}></span> */}
+                                <Image
+                                    width={400}
+                                    height={500}
+                                    src={`${baseUrl}/v1/retail/image/1080/bynder/${color.retailImage.mediaKey}/${color.uri}.webp`}
+                                    alt={product.name}
+                                    priority
+                                    className="w-8 h-8 object-cover rounded-full"
+                                />
+                            </>
+                        ))}
+                        {colorLinks.length > 4 && (
+                            <div className="text-sm">
+                            +{colorLinks.length - 4}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </Link>

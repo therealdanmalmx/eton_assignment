@@ -8,8 +8,6 @@ import { Product } from "@/interfaces";
 const ProductListPage = () => {
     const { products } = useProducts();
 
-    console.log('products from context', products);
-
     if (!products) {
         toast.error('No products found');
         return notFound();

@@ -38,3 +38,18 @@ export interface ProductContextType {
     products: Product[];
     fetchProducts: () => void;
   }
+
+export interface ProductDetails {
+    id: string | number;
+    product: Product;
+}
+
+export interface ColorLinks {
+    colorId: string;
+    colorName: string;
+    displayId: number;
+    inStock: boolean;
+    uri: string;
+    retailImage: RetailImage;
+
+}
