@@ -20,7 +20,7 @@ const ProductDetailsPage = ({product}: Product) => {
                 />
                 ))}
         </div>
-        <div className='text-md font-bold mx-24 my-10 space-x-28 flex justify-between items-start'>
+        <div className='text-md font-bold lg:mx-24 lg:my-10 m-8 space-y-4 lg:space-x-28 flex flex-col lg:flex-row justify-between items-start'>
             <div>
                 <div>{product.name}<span className='font-normal'> <p>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p></span></div>
                     {product.productVariants[0].isAvailableCustomMade && (
