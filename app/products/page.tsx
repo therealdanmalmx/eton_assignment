@@ -26,6 +26,7 @@ const ProductListPage = () => {
                         uri={product.uri}
                         type={product.type}
                         productVariants={product.productVariants}
+                        colorLinks={product.colorLinks}
                     />
                 ))}
             </div>
