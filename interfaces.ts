@@ -20,6 +20,7 @@ export interface Product {
         id: string | number;
         name: string;
         uri: string;
+        type: string;
         productVariants: ProductVariant[];
     }
     id: string | number;

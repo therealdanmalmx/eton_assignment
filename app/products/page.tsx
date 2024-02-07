@@ -10,7 +10,7 @@ const ProductListPage = () => {
 
     console.log('products from context', products);
 
-    if (products.length === 0) {
+    if (!products) {
         toast.error('No products found');
         return notFound();
     }
@@ -20,7 +20,15 @@ const ProductListPage = () => {
             <div className="text-3xl font-bold text-center my-12">Eton</div>
             <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 lg:gap-2">
                 {products.map((product: Product) => (
-                    <ProductCard key={product.id} product={product} /> // Ensure that the ProductCard component receives the correct props
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        id={product.id}
+                        name={product.name}
+                        uri={product.uri}
+                        type={product.type}
+                        productVariants={product.productVariants}
+                    />
                 ))}
             </div>
             <Toaster />
