@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
 
     return (
-      <div className="flex flex-col h-screen bg-center bg-cover overflow-hidden bg-home-image bg-opacity-10 bg-blend-overlay bg-slate-900">
+      <div className="flex flex-col h-dvh bg-center bg-cover overflow-hidden bg-home-image bg-opacity-10 bg-blend-overlay bg-slate-900">
         <div className="pt-12 text-center">
           <div className="text-white text-3xl font-bold">Eton</div>
           <div className="text-white">Quality Shirts and Accessories</div>
