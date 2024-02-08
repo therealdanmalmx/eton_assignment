@@ -1,9 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import { Product } from '@/interfaces';
+import { ColorLinks, Product } from '@/interfaces';
 
 const ProductDetailsPage = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
+    const { colorLinks } = product;
+
+
+    console.log({product});
 
   return (
     <div>
@@ -20,7 +24,8 @@ const ProductDetailsPage = ({product}: Product) => {
                 />
                 ))}
         </div>
-        <div className='text-md font-bold lg:mx-24 lg:my-10 m-8 space-y-4 lg:space-x-28 flex flex-col lg:flex-row justify-between items-start'>
+
+        <div className='text-md font-bold lg:mx-24 lg:my-10 m-8 space-y-4 lg:space-y-0 lg:space-x-28 flex flex-col lg:flex-row justify-between items-start'>
             <div>
                 <div>{product.name}
                     <p className='font-normal'>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p>
@@ -34,6 +39,21 @@ const ProductDetailsPage = ({product}: Product) => {
             <div>
                 <div>Color
                     <p className='font-normal'>{product.name.split(' ')[0]}</p>
+                </div>
+            </div>
+            <div>Available colors
+                <div className='flex items-center justify-start space-x-2'>
+                    {colorLinks.map((color: ColorLinks) => (
+                        <Image
+                            key={color.colorId}
+                            width={400}
+                            height={500}
+                            src={`${baseUrl}/v1/retail/image/1080/bynder/${color.retailImage.mediaKey}/${color.uri}.webp`}
+                            alt={product.name}
+                            priority
+                            className="w-10 h-10 rounded-full"
+                        />
+                    ))}
                 </div>
             </div>
             <div className='space-y-4'>
