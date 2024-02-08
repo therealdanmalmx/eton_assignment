@@ -22,19 +22,29 @@ const ProductDetailsPage = ({product}: Product) => {
         </div>
         <div className='text-md font-bold lg:mx-24 lg:my-10 m-8 space-y-4 lg:space-x-28 flex flex-col lg:flex-row justify-between items-start'>
             <div>
-                <div>{product.name}<span className='font-normal'> <p>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p></span></div>
+                <div>{product.name}
+                    <p className='font-normal'>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p>
+                </div>
+                <div className='my-2'>
                     {product.productVariants[0].isAvailableCustomMade && (
-                        <div className='text-2xl font-bold m-4'>Can be customed made</div>
+                        <div className='font-bold'>Can be custom made</div>
                     )}
+                </div>
             </div>
             <div>
-                <div>Color<p><span className='font-normal'>{product.name.split(' ')[0]}</span></p></div>
+                <div>Color
+                    <p className='font-normal'>{product.name.split(' ')[0]}</p>
+                </div>
             </div>
             <div className='space-y-4'>
                 {product.productVariants[0].bodyfitName && (
-                    <div>{product.type}<p><span className='font-normal'>{product.productVariants[0].bodyfitName}</span></p></div>
-                    )}
-                <div>Article number<p><span className='font-normal'>{product.productVariants[0].articleNumber}</span></p></div>
+                    <div>{product.type}
+                        <p className='font-normal'>{product.productVariants[0].bodyfitName}</p>
+                    </div>
+                )}
+                <div>Article number
+                    <p className='font-normal'>{product.productVariants[0].articleNumber}</p>
+                </div>
             </div>
         </div>
     </div>
