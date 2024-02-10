@@ -17,14 +17,14 @@ export interface ProductVariant {
 
 export interface Product {
     product: {
-        id: string | number;
+        id: number;
         name: string;
         uri: string;
         type: string;
         productVariants: ProductVariant[];
         colorLinks: ColorLinks[];
     }
-    id: string | number;
+    id: number;
     name: string;
     uri: string;
     type: string;
