@@ -20,7 +20,7 @@ const ProductCard = ({product}: Product) => {
                         priority
                         className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:opacity-0"
                     />
-                    {/* Hover Image */}
+                    {/* 'Hover' Image */}
                     {product.productVariants[0].retailImages.gallery.map((image: RetailImage) => (
                         <Image
                             key={image.mediaKey}

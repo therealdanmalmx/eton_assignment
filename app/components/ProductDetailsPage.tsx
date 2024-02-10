@@ -6,9 +6,6 @@ const ProductDetailsPage = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
     const { colorLinks } = product;
 
-
-    console.log({product});
-
   return (
     <div>
         <div className='flex justify-start gap-2 items-center overflow-scroll'>
