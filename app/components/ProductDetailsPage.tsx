@@ -39,7 +39,7 @@ const ProductDetailsPage = ({product}: Product) => {
                                 <span className='text-red-600'>-{discountPercent}%</span>
                             </div>
                         ) : (
-                            <div className="text-sm">{formattedPrice}</div>
+                            <div className="text-sm font-normal">{formattedPrice}</div>
 
                         )}
                     {/* <p className='font-normal'>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p> */}
