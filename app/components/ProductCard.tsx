@@ -30,8 +30,8 @@ const ProductCard = ({product}: Product) => {
                         priority
                         className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:opacity-0"
                     />
-                    {/* 'Hover' Image - slice to use the second image as hover*/}
-                    {product.productVariants[0].retailImages.gallery.slice(0, 2).map((image: RetailImage) => (
+                    {/* 'Hover' Image - takes the last image of the array */}
+                    {product.productVariants[0].retailImages.gallery.map((image: RetailImage) => (
                         <Image
                             key={image.mediaKey}
                             width={400}
