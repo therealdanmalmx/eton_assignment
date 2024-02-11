@@ -5,7 +5,18 @@ import Link from 'next/link'
 
 const ProductCard = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
+
+    console.log({product});
     const { colorLinks } = product;
+    const { thumbnail } = product.productVariants[0].retailImages;
+    const {
+        formattedPriceBeforeDiscount,
+        showAsOnSale,
+        discountPercent,
+        formattedPrice,
+    } = product.productVariants[0].price;
+
+    const discounted = true;
 
     return (
         <Link href={`/products/${product.id}`}>
@@ -13,7 +24,7 @@ const ProductCard = ({product}: Product) => {
                 <div className="relative min-h-[200px] w-full">
                     {/* Initial image */}
                     <Image
-                        src={`${baseUrl}/v1/retail/image/1080/bynder/${product.productVariants[0].retailImages.thumbnail.mediaKey}/${product.uri}.webp`}
+                        src={`${baseUrl}/v1/retail/image/1080/bynder/${thumbnail.mediaKey}/${product.uri}.webp`}
                         alt={product.name}
                         width={400}
                         height={500}
@@ -39,7 +50,16 @@ const ProductCard = ({product}: Product) => {
                         <div className="text-xs font-semibold">{product.name}</div>
                         {/* Available color amount mobile/tablet */}
                         <div className='block lg:hidden text-sm'>+{colorLinks.length - 1}<span className='mx-1'>colors</span></div>
-                        <div className="text-sm">{product.productVariants[0].price.formattedPriceBeforeDiscount}</div>
+                        {showAsOnSale ? (
+                            <div className="text-sm space-x-2 ">
+                                <span>{formattedPrice}</span>
+                                <span className="text-xs text-slate-500 line-through">{formattedPriceBeforeDiscount}</span>
+                                <span className='text-red-600'>-{discountPercent}%</span>
+                            </div>
+                        ) : (
+                            <div className="text-sm">{formattedPriceBeforeDiscount}</div>
+
+                        )}
                     </div>
                     {/* Available colors */}
                     <div className='flex items-center justify-center space-x-1 lg:space-x-2'>

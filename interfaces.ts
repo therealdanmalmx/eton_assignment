@@ -8,6 +8,9 @@ export interface ProductVariant {
         gallery: RetailImage[];
     };
     price: {
+        formattedPrice: string;
+        showAsOnSale: boolean;
+        discountPercent: number;
         formattedPriceBeforeDiscount: string;
     };
     isAvailableCustomMade: boolean;
