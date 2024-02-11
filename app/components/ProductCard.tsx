@@ -8,15 +8,14 @@ const ProductCard = ({product}: Product) => {
 
     console.log({product});
     const { colorLinks } = product;
-    const { thumbnail } = product.productVariants[0].retailImages;
+    const { thumbnail, gallery } = product.productVariants[0].retailImages;
+    console.log(gallery.slice(0, 1));
     const {
         formattedPriceBeforeDiscount,
         showAsOnSale,
         discountPercent,
         formattedPrice,
     } = product.productVariants[0].price;
-
-    const discounted = true;
 
     return (
         <Link href={`/products/${product.id}`}>
@@ -31,8 +30,8 @@ const ProductCard = ({product}: Product) => {
                         priority
                         className="w-full h-full object-cover transition-all duration-500 cursor-pointer hover:opacity-0"
                     />
-                    {/* 'Hover' Image */}
-                    {product.productVariants[0].retailImages.gallery.map((image: RetailImage) => (
+                    {/* 'Hover' Image - slice to use the second image as hover*/}
+                    {product.productVariants[0].retailImages.gallery.slice(0, 2).map((image: RetailImage) => (
                         <Image
                             key={image.mediaKey}
                             width={400}
