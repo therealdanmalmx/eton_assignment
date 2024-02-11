@@ -47,7 +47,7 @@ const ProductCard = ({product}: Product) => {
                         <div className="text-xs font-semibold">{product.name}</div>
                         {/* Available color amount mobile/tablet */}
                         <div className='block lg:hidden text-sm'>+{colorLinks.length - 1}<span className='mx-1'>colors</span></div>
-                        {/* Discouned price */}
+                        {/* Discounted price */}
                         {showAsOnSale ? (
                             <div className="text-sm space-x-2 ">
                                 <span>{formattedPrice}</span>

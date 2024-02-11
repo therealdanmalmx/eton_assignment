@@ -5,7 +5,14 @@ import { ColorLinks, Product } from '@/interfaces';
 const ProductDetailsPage = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
     const { colorLinks } = product;
+    const {
+        formattedPriceBeforeDiscount,
+        showAsOnSale,
+        discountPercent,
+        formattedPrice,
+    } = product.productVariants[0].price;
 
+    const discount: boolean = true;
   return (
     <div>
         <div className='flex justify-start gap-2 items-center overflow-scroll'>
@@ -25,7 +32,17 @@ const ProductDetailsPage = ({product}: Product) => {
         <div className='text-md font-bold lg:mx-24 lg:my-10 m-8 space-y-4 lg:space-y-0 lg:space-x-28 flex flex-col lg:flex-row justify-between items-start'>
             <div>
                 <div>{product.name}
-                    <p className='font-normal'>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p>
+                {showAsOnSale ? (
+                            <div className="text-sm font-normal space-x-2 ">
+                                <span>{formattedPrice}</span>
+                                <span className="text-xs text-slate-500 line-through">{formattedPriceBeforeDiscount}</span>
+                                <span className='text-red-600'>-{discountPercent}%</span>
+                            </div>
+                        ) : (
+                            <div className="text-sm">{formattedPrice}</div>
+
+                        )}
+                    {/* <p className='font-normal'>{product.productVariants[0].price.formattedPriceBeforeDiscount}</p> */}
                 </div>
                 <div className='my-2'>
                     {product.productVariants[0].isAvailableCustomMade && (
