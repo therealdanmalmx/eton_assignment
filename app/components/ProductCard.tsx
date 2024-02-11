@@ -6,10 +6,8 @@ import Link from 'next/link'
 const ProductCard = ({product}: Product) => {
     const baseUrl = 'https://staging-api.etonshirts.com';
 
-    console.log({product});
     const { colorLinks } = product;
     const { thumbnail, gallery } = product.productVariants[0].retailImages;
-    console.log(gallery.slice(0, 1));
     const {
         formattedPriceBeforeDiscount,
         showAsOnSale,
